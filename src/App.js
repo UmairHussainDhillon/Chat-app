@@ -23,21 +23,23 @@ function App() {
        <Route
         path="/dashboard"
         render={(props) => (
-            <Dasshboard/>  
+            <Dasshboard {...props}/>  
         )}
       />
+      
       <Route
         path="/login"
         render={(props) => (
           
-            <Login/>  
+            <Login {...props}
+            />  
         )}
       />
       <Route
         path="/register"
         render={(props) => (
           
-            <Register/>  
+            <Register {...props}/>  
         )}
       />
       </Switch>

@@ -67,7 +67,6 @@ export default class Login extends Component {
     console.log(res)
     if(res.data.status === 200){
       localStorage.setItem('token',res.data.token)
-      this.props.handleResponse(res.data);
       this.props.history.push("/dashboard");
     }
     else{

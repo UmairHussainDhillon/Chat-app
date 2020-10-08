@@ -66,7 +66,7 @@ export default class Login extends Component {
     url: "http://localhost:4000/register",
   }).then((res) =>{
     console.log(res)
-    if(res.data.status === 200){
+    if(res.status === 200){
       this.props.history.push("/login");
     }
     else{
