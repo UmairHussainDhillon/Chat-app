@@ -8,15 +8,22 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+import Dasshboard from './components/dasshboard';
 function App() {
   return (
     <Router>
     <Switch>
     <Route
-        path="/home"
+        path="/home" exact
         render={(props) => (
           
             <Index/>  
+        )}
+      />
+       <Route
+        path="/dashboard"
+        render={(props) => (
+            <Dasshboard/>  
         )}
       />
       <Route
