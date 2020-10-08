@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import './styles.css'
 import Axios from 'axios'
+import './styles.css'
+
 import {
      Link,
 } from "react-router-dom";
@@ -52,7 +53,7 @@ export default class Login extends Component {
 };
 
 
- login = (e) => {
+ Register = (e) => {
   e.preventDefault();
   if(this.handleValidation()){
   Axios({
@@ -62,13 +63,11 @@ export default class Login extends Component {
       password: this.state.password,
     },
     withCredentials: true,
-    url: "http://localhost:4000/login",
+    url: "http://localhost:4000/register",
   }).then((res) =>{
     console.log(res)
     if(res.data.status === 200){
-      localStorage.setItem('token',res.data.token)
-      this.props.handleResponse(res.data);
-      this.props.history.push("/dashboard");
+      this.props.history.push("/login");
     }
     else{
       swal("There is an error")
@@ -87,11 +86,9 @@ export default class Login extends Component {
   render() {
 
     return (
-   
-  
-      <div className="body-container">
+      <div >
         <div className="base-container">
-          <div className="header"><b>Login</b></div>
+          <div className="header"><b>Register</b></div>
           <div className="content">
             
             <form >
@@ -124,14 +121,13 @@ export default class Login extends Component {
             </div>
             <div className="after">
               <p className="sign-up">
-                Not a User?
-                  <Link to="/register">Sign up</Link>
+                Already have an Account?
+                  <Link to="/login">Login</Link>
               </p>
             </div>
-          
           <div className="footer">
-            <button type="submit" onClick={this.login.bind(this)} className="btn btn-primary ">
-              Login
+            <button type="submit" onClick={this.Register.bind(this)} className="btn btn-primary">
+              Register
             </button>
           </div>
      </form>
