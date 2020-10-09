@@ -11,7 +11,7 @@ export default class Login extends Component {
   
     this.state = {
       password: "",
-      email: "",
+      name: "",
       errors: {},
      data: "",
      token:localStorage.getItem("token"),
@@ -33,20 +33,11 @@ export default class Login extends Component {
 
 
   //Email
-  if(!this.state.email){
+  if(!this.state.name){
      formIsValid = false;
-     errors["email"] = "Cannot be empty";
+     errors["name"] = "Cannot be empty";
   }
 
-  if(this.state.email && typeof this.state.email !== "undefined"){
-     let lastAtPos = this.state.email.lastIndexOf('@');
-     let lastDotPos = this.state.email.lastIndexOf('.');
-
-     if (!(lastAtPos < lastDotPos && lastAtPos > 0 && this.state.email.indexOf('@@') === -1 && lastDotPos > 2 && (this.state.email.length - lastDotPos) > 2)) {
-        formIsValid = false;
-        errors["email"] = "Email is not valid";
-      }
- }  
  this.setState({errors: errors});
  return formIsValid;
 };
@@ -58,7 +49,7 @@ export default class Login extends Component {
   Axios({
     method: "POST",
     data: {
-      email: this.state.email,
+      name: this.state.name,
       password: this.state.password,
     },
     withCredentials: true,
@@ -96,15 +87,15 @@ export default class Login extends Component {
             <form >
             <div className="form">
               <div className="form-group">
-                <label htmlFor="email">Username</label>
+                <label htmlFor="name">Username</label>
                 <input 
                 value={this.state.value}
-                  type="email"
+                  type="name"
                   className="form-control"
-                  name="email"
-                  placeholder="Enter email"
+                  name="name"
+                  placeholder="Enter name"
                   onChange={this.handleChange.bind(this)}                  />
-              <span style={{color: "red"}}>{this.state.errors["email"]}</span>
+              <span style={{color: "red"}}>{this.state.errors["name"]}</span>
 
               </div>
               <div className="form-group">

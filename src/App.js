@@ -2,13 +2,15 @@ import React from 'react';
 import Login from './components/Login'
 import Register from './components/Register'
 import Index from './components/index'
-
 import {
   BrowserRouter as Router,
   Route,
   Switch,
 } from "react-router-dom";
-import Dasshboard from './components/dasshboard';
+import ApiData from './components/dashboard';
+import Users from './components/Users';
+
+
 function App() {
   return (
     <Router>
@@ -20,10 +22,21 @@ function App() {
             <Index/>  
         )}
       />
+     
        <Route
         path="/dashboard"
         render={(props) => (
-            <Dasshboard {...props}/>  
+          <>
+            <ApiData {...props}/>  
+          </>
+        )}
+      />
+        <Route
+        path="/users"
+        render={(props) => (
+          <>
+            <Users {...props}/>  
+          </>
         )}
       />
       
